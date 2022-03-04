@@ -6,12 +6,11 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-
-            Console.WriteLine("\nActivity1:");
+            Console.WriteLine("Data Structures and Algorithms!");
 
             //Week2.Activity1();
-            Week2.Activity2();
+            //Week2.Activity2();
+            Week2.Activity3();
 
             Console.ReadLine();
 
