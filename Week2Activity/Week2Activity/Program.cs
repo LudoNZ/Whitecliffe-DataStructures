@@ -10,7 +10,10 @@ namespace ConsoleApp1
 
             Console.WriteLine("\nActivity1:");
 
-            activity1.Compute();
+            //Week2.Activity1();
+            Week2.Activity2();
+
+            Console.ReadLine();
 
         }
     }
