@@ -29,7 +29,6 @@ namespace ConsoleApp1
             Console.ReadLine();
         }
 
-
         public static void Activity2()
         //Write a program in C# to read n number of values in an array and display it in reverse order
         {
@@ -108,27 +107,43 @@ namespace ConsoleApp1
             LinkedList<string> mylist = new LinkedList<string>();
 
             //Gather Length of List
-            Console.Write("Input the number of nodes: ");
+            Console.Write("\nInput the number of nodes: ");
             int nodes = int.Parse(Console.ReadLine());
 
             //Collect data to poopulate list
             for (int i = 0; i < nodes; i++)
             {
-                Console.Write($"input data for node {i}: ");
+                Console.Write($"input data for node {i+1}: ");
                 mylist.AddLast(Console.ReadLine());
             }
 
-            //Show list in order
-            Console.WriteLine("Data Entered in the list:");
-            foreach(string item in mylist)
+
+            //Show list items
+            Console.WriteLine("\nData Entered in the list:");
+            foreach (string item in mylist)
             {
                 Console.WriteLine($"Data = {item}");
+
             }
 
-            //Show list in reverse order
-            Console.WriteLine("The List in reverse order is:");
 
-            LinkedListNode<string> currentNode = mylist.Last;
+            //Show list in order
+            Console.WriteLine("\nThe List in forward order is:");
+            
+            LinkedListNode<string> currentNode = mylist.First;
+
+            do
+            {
+                Console.WriteLine($"Data: {currentNode.Value}");
+                currentNode = currentNode.Next;
+            }
+            while (currentNode != null);
+
+
+            //Show list in reverse order
+            Console.WriteLine("\nThe List in reverse order is:");
+
+            currentNode = mylist.Last;
 
             do
             {
