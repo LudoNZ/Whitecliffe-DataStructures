@@ -10,7 +10,8 @@ namespace ConsoleApp1
 
             //Week2.Activity1();
             //Week2.Activity2();
-            Week2.Activity3();
+            //Week2.Activity3();
+            Week2.Activity4();
 
             Console.ReadLine();
 

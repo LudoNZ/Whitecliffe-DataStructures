@@ -9,7 +9,7 @@ namespace ConsoleApp1
         public static void Activity1()
         //Write a program in C# that ask a user to enter 10 integer numbers (use an array store those numbers in an array and print those numbers.
         {
-            Console.WriteLine("\nActivity1:");
+            Console.WriteLine("\nActivity1");
 
             int[] numbers = new int[10];
 
@@ -33,7 +33,7 @@ namespace ConsoleApp1
         public static void Activity2()
         //Write a program in C# to read n number of values in an array and display it in reverse order
         {
-            Console.WriteLine("\nActivity2:");
+            Console.WriteLine("\nActivity2");
 
             //Gather Array size from user
             Console.Write("Input the number of elements to store in the array: ");
@@ -70,7 +70,7 @@ namespace ConsoleApp1
         public static void Activity3()
         //Write a C# program that prints the multiplication tables from 1 to 12. Each row should display 4 tables with proper format.
         {
-            Console.WriteLine("\nActivity3:");
+            Console.WriteLine("\nActivity3");
 
             for (int j = 0; j < 12; j+=4)
             {//each set of tables
@@ -99,6 +99,43 @@ namespace ConsoleApp1
             } 
 
             return result;
+        }
+
+        public static void Activity4()
+        {
+            Console.WriteLine("\nActivity4");
+
+            LinkedList<string> mylist = new LinkedList<string>();
+
+            //Gather Length of List
+            Console.Write("Input the number of nodes: ");
+            int nodes = int.Parse(Console.ReadLine());
+
+            //Collect data to poopulate list
+            for (int i = 0; i < nodes; i++)
+            {
+                Console.Write($"input data for node {i}: ");
+                mylist.AddLast(Console.ReadLine());
+            }
+
+            //Show list in order
+            Console.WriteLine("Data Entered in the list:");
+            foreach(string item in mylist)
+            {
+                Console.WriteLine($"Data = {item}");
+            }
+
+            //Show list in reverse order
+            Console.WriteLine("The List in reverse order is:");
+
+            LinkedListNode<string> currentNode = mylist.Last;
+
+            do
+            {
+                Console.WriteLine($"Data = {currentNode.Value}");
+                currentNode = currentNode.Previous;
+            }
+            while (currentNode != null);            
         }
     }
 }
