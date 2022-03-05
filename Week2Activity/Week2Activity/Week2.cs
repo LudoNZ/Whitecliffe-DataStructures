@@ -6,8 +6,8 @@ namespace ConsoleApp1
 {
     class Week2
     {
-        public static void Activity1()
         //Write a program in C# that ask a user to enter 10 integer numbers (use an array store those numbers in an array and print those numbers.
+        public static void Activity1()
         {
             Console.WriteLine("\nActivity1");
 
@@ -21,7 +21,7 @@ namespace ConsoleApp1
 
             Console.Write("Elements in array are: ");
 
-            for (int i = 0; i < 10; i++) 
+            for (int i = 0; i < 10; i++)
             {
                 Console.Write($" {numbers[i]}");
             }
@@ -29,8 +29,8 @@ namespace ConsoleApp1
             Console.ReadLine();
         }
 
-        public static void Activity2()
         //Write a program in C# to read n number of values in an array and display it in reverse order
+        public static void Activity2()
         {
             Console.WriteLine("\nActivity2");
 
@@ -44,7 +44,7 @@ namespace ConsoleApp1
             Console.WriteLine($"Input { nElement } number of elements in the array:");
 
             //Gather List Input
-            for(int i = 0; i < nElement; i++)
+            for (int i = 0; i < nElement; i++)
             {
                 Console.Write($"element - { i }: ");
                 values[i] = int.Parse(Console.ReadLine());
@@ -55,23 +55,23 @@ namespace ConsoleApp1
             Console.Write("\nThe numbers stored in the array are:");
             for (int i = 0; i < nElement; i++)
             {
-                Console.Write($" {values[ i ]}");
+                Console.Write($" {values[i]}");
             }
 
             //Print List in Reverse
             Console.Write("\nThe values stored into the array in reverse are:");
-            for (int i = nElement -1 ; i > -1; i--)
+            for (int i = nElement - 1; i > -1; i--)
             {
                 Console.Write($" {values[i]}");
             }
         }
 
-        public static void Activity3()
         //Write a C# program that prints the multiplication tables from 1 to 12. Each row should display 4 tables with proper format.
+        public static void Activity3()
         {
             Console.WriteLine("\nActivity3");
 
-            for (int j = 0; j < 12; j+=4)
+            for (int j = 0; j < 12; j += 4)
             {//each set of tables
 
                 for (int row = 1; row < 13; row++)
@@ -95,7 +95,7 @@ namespace ConsoleApp1
             for (int i = add; i > 0; i--)
             {
                 result = " " + result;
-            } 
+            }
 
             return result;
         }
@@ -113,7 +113,7 @@ namespace ConsoleApp1
             //Collect data to poopulate list
             for (int i = 0; i < nodes; i++)
             {
-                Console.Write($"input data for node {i+1}: ");
+                Console.Write($"input data for node {i + 1}: ");
                 mylist.AddLast(Console.ReadLine());
             }
 
@@ -129,7 +129,7 @@ namespace ConsoleApp1
 
             //Show list in order
             Console.WriteLine("\nThe List in forward order is:");
-            
+
             LinkedListNode<string> currentNode = mylist.First;
 
             do
@@ -150,7 +150,13 @@ namespace ConsoleApp1
                 Console.WriteLine($"Data = {currentNode.Value}");
                 currentNode = currentNode.Previous;
             }
-            while (currentNode != null);            
+            while (currentNode != null);
         }
+
+        public static void Activity5()
+            { LinkedList<T> myList = new LinkedList<T>();
+
+            }
+
     }
 }
