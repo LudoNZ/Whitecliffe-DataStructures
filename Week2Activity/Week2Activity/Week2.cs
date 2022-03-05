@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ConsoleApp1
+namespace DataStruct_Weekly
 {
     class Week2
     {
@@ -154,7 +154,7 @@ namespace ConsoleApp1
         }
 
         public static void Activity5()
-            { LinkedList<T> myList = new LinkedList<T>();
+            { //LinkedList<T> myList = new LinkedList<T>();
 
             }
 
