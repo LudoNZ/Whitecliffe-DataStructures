@@ -13,14 +13,16 @@ namespace DataStruct_Weekly
 
             int[] numbers = new int[10];
 
+            //input 10 numbers from user
             for (int i = 0; i < 10; i++)
             {
                 Console.WriteLine($"Enter number { i + 1 } of 10:");
                 numbers[i] = int.Parse(Console.ReadLine());
             }
 
+            //print array
             Console.Write("Elements in array are: ");
-
+            
             for (int i = 0; i < 10; i++)
             {
                 Console.Write($" {numbers[i]}");
@@ -34,7 +36,7 @@ namespace DataStruct_Weekly
         {
             Console.WriteLine("\nActivity2");
 
-            //Gather Array size from user
+            //input Array size from user
             Console.Write("Input the number of elements to store in the array: ");
 
             int nElement = int.Parse(Console.ReadLine());
@@ -43,7 +45,7 @@ namespace DataStruct_Weekly
 
             Console.WriteLine($"Input { nElement } number of elements in the array:");
 
-            //Gather List Input
+            //input List Data
             for (int i = 0; i < nElement; i++)
             {
                 Console.Write($"element - { i }: ");
@@ -71,13 +73,13 @@ namespace DataStruct_Weekly
         {
             Console.WriteLine("\nActivity3");
 
+            //Loop through each line of tables
             for (int j = 0; j < 12; j += 4)
-            {//each set of tables
-
+            {
                 for (int row = 1; row < 13; row++)
-                {//each row
+                {
                     for (int i = 1 + j; i < j + 5; i++)
-                    {//fill 4x tables
+                    {
                         Console.Write($" {Week2.ReLength(i, 5)} x {Week2.ReLength(row, 2)} = {Week2.ReLength(i * row, 3)} ");
                     }
                     Console.WriteLine();
@@ -86,6 +88,7 @@ namespace DataStruct_Weekly
             }
         }
 
+        //add blank space to strings for uniform size
         private static string ReLength(int input, int finalLength)
         {
             string result = Convert.ToString(input);
@@ -100,25 +103,25 @@ namespace DataStruct_Weekly
             return result;
         }
 
+        //Write a C# program to create LinkedList that ask user input and display user values in forward and reverse order.
         public static void Activity4()
         {
             Console.WriteLine("\nActivity4");
 
             LinkedList<string> mylist = new LinkedList<string>();
 
-            //Gather Length of List
+            //input Length of List
             Console.Write("\nInput the number of nodes: ");
             int nodes = int.Parse(Console.ReadLine());
 
-            //Collect data to poopulate list
+            //input data to populate list
             for (int i = 0; i < nodes; i++)
             {
                 Console.Write($"input data for node {i + 1}: ");
                 mylist.AddLast(Console.ReadLine());
             }
 
-
-            //Show list items
+            //print list items
             Console.WriteLine("\nData Entered in the list:");
             foreach (string item in mylist)
             {
@@ -126,10 +129,8 @@ namespace DataStruct_Weekly
 
             }
 
-
-            //Show list in order
             Console.WriteLine("\nThe List in forward order is:");
-
+            //Show list in order
             LinkedListNode<string> currentNode = mylist.First;
 
             do
@@ -140,9 +141,8 @@ namespace DataStruct_Weekly
             while (currentNode != null);
 
 
-            //Show list in reverse order
             Console.WriteLine("\nThe List in reverse order is:");
-
+            //Show list in reverse order
             currentNode = mylist.Last;
 
             do
