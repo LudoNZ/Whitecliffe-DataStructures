@@ -20,7 +20,7 @@ namespace DataStruct_Weekly
 
             Week1.Activity4(12);
             Week1.Activity4(5);
-            Week1.Activity4(598);
+            Week1.Activity4(4);
             
 
             Console.WriteLine("\nEND of Program");
