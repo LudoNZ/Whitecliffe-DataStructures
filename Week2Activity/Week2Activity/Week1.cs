@@ -142,6 +142,7 @@ namespace DataStruct_Weekly
             Console.WriteLine(Activity3_Test(myList3, expectedSum, expectedAv));
         }
 
+
         //Write a program in C# Sharp to display the multiplication table of a given integer.
         public static void Activity4(int input)
         {
@@ -149,7 +150,66 @@ namespace DataStruct_Weekly
 
             string[] multiTable = CreateTable(input);
 
-            PrintTable<string>(ref multiTable);
+            PrintTable<string>(multiTable);
+        }
+
+        public static void Activity4_AutoTest()
+        {
+            int input = 4;
+
+            string[] expectedValue = {
+            "4 X 1 = 4",
+            "4 X 2 = 8",
+            "4 X 3 = 12",
+            "4 X 4 = 16",
+            "4 X 5 = 20",
+            "4 X 6 = 24",
+            "4 X 7 = 28",
+            "4 X 8 = 32",
+            "4 X 9 = 36",
+            "4 X 10 = 40",
+            "4 X 11 = 44",
+            "4 X 12 = 48"};
+
+            Console.WriteLine(ArrayMatch<string>(expectedValue, CreateTable(input)));
+
+            input = 12;
+
+            expectedValue = new string[] {
+                "12 X 1 = 12",
+                "12 X 2 = 24",
+                "12 X 3 = 36",
+                "12 X 4 = 48",
+                "12 X 5 = 60",
+                "12 X 6 = 72",
+                "12 X 7 = 84",
+                "12 X 8 = 96",
+                "12 X 9 = 108",
+                "12 X 10 = 120",
+                "12 X 11 = 132",
+                "12 X 12 = 144"};
+
+            Console.WriteLine(ArrayMatch<string>(expectedValue, CreateTable(input)));
+
+            input = 100;
+
+            expectedValue = new string[] {
+            "100 X 1 = 100",
+            "100 X 2 = 200",
+            "100 X 3 = 300",
+            "100 X 4 = 400",
+            "100 X 5 = 500",
+            "100 X 6 = 600",
+            "100 X 7 = 700",
+            "100 X 8 = 800",
+            "100 X 9 = 900",
+            "100 X 10 = 1000",
+            "100 X 11 = 1100",
+            "100 X 12 = 1200"};
+
+            Console.WriteLine(ArrayMatch<string>(expectedValue, CreateTable(input)));
+
+
         }
 
         static string[] CreateTable(int input)
@@ -163,14 +223,35 @@ namespace DataStruct_Weekly
             return multiTable;
         }
 
-            public static void PrintTable<T>(ref T[] table)
+        public static void PrintTable<T>(T[] table)
         {
             Console.WriteLine("Arithmetic operations on the given numbers:");
 
-            for(int i = 0; i < table.Length; i++)
+            for (int i = 0; i < table.Length; i++)
             {
-                    Console.WriteLine(table[i]);
+                Console.WriteLine(table[i]);
             }
+        }
+
+
+        public static bool ArrayMatch<T>(T[] array1, T[] array2)
+        {
+            bool match = true;
+
+            int length = array1.Length;
+
+            match = (length == array2.Length);
+
+            int i = 0;
+
+            while (match && i < length)
+            {
+                match = array1[i].Equals(array2[i]);
+
+                i++;
+            }
+
+            return match;
         }
     }
 }
