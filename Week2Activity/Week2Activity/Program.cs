@@ -14,7 +14,9 @@ namespace DataStruct_Weekly
             //Week2.Activity4();
 
             Week1.Activity1_AutoTest();
+            Week1.Activity2_AutoTest();
 
+            Console.WriteLine("END");
             Console.ReadLine();
 
         }

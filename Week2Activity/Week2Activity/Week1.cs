@@ -21,7 +21,7 @@ namespace DataStruct_Weekly
             return check % 2 == 0 || check % 3 == 0;
         }
 
-        public static bool Activity1_Test(int int1, int int2, int expectedResult)
+        static bool Activity1_Test(int int1, int int2, int expectedResult)
         {
             return expectedResult == Activity1(int1, int2);
         }
@@ -38,5 +38,44 @@ namespace DataStruct_Weekly
             Console.WriteLine(Activity1_Test(7, 3, 10));
         }
 
+        //Write a Temperature conversion program that converts Celsius to Fahrenheit and vice versa.
+        public static string Activity2(float degree, string FOrC)
+        {
+            string result;
+
+            if(FOrC == "f")
+            {
+                result = ((degree - 32) / 1.8).ToString("0.##");
+            }
+            else if(FOrC == "c")
+                {
+                result = (degree * 1.8f + 32f).ToString("0.##");
+            }
+            else
+            {
+                result = "please enter f or c as unit";
+            }
+
+            //Console.WriteLine($"\ninput = {degree} {FOrC} \n" +
+            //                    $"  result: {result}");
+            return result;
+        }
+
+        static bool Activity2_Test(float degree, string FOrC, string expectedResult)
+        {
+            return expectedResult == Activity2(degree, FOrC);
+        }
+
+        public static void Activity2_AutoTest()
+        {
+            Console.WriteLine("\nActivity2 Auto Tests:");
+            Console.WriteLine(Activity2_Test(32f, "f", "0"));
+            Console.WriteLine(Activity2_Test(100f, "f", "37.78"));
+            Console.WriteLine(Activity2_Test(-60f, "f", "-51.11"));
+            Console.WriteLine(Activity2_Test(0f, "c", "32"));
+            Console.WriteLine(Activity2_Test(32f, "c", "89.6"));
+            Console.WriteLine(Activity2_Test(89f, "c", "192.2"));
+            Console.WriteLine(Activity2_Test(89f, "k", "please enter f or c as unit"));
+        }
     }
 }
