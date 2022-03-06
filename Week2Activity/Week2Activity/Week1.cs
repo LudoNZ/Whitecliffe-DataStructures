@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Text;
 
 namespace DataStruct_Weekly
@@ -9,8 +10,8 @@ namespace DataStruct_Weekly
         //Given two integers, write a method that returns their multiplication if they are both divisible by 2 or 3, otherwise returns their sum
         public static int Activity1(int int1, int int2)
         {
-            int result = IsDevisibleBy2or3(int1) && IsDevisibleBy2or3(int2) 
-                            ? int1 * int2 
+            int result = IsDevisibleBy2or3(int1) && IsDevisibleBy2or3(int2)
+                            ? int1 * int2
                             : int1 + int2;
 
             return result;
@@ -44,12 +45,12 @@ namespace DataStruct_Weekly
         {
             string result;
 
-            if(FOrC == "f")
+            if (FOrC == "f")
             {
                 result = ((degree - 32) / 1.8).ToString("0.##");
             }
-            else if(FOrC == "c")
-                {
+            else if (FOrC == "c")
+            {
                 result = (degree * 1.8f + 32f).ToString("0.##");
             }
             else
@@ -86,7 +87,7 @@ namespace DataStruct_Weekly
             int[] myList = new int[10];
 
             //input 10 numbers
-            for(int i = 0; i < 10; i++)
+            for (int i = 0; i < 10; i++)
             {
                 Console.Write($"Enter Number {i + 1} of 10: ");
                 myList[i] = int.Parse(Console.ReadLine());
@@ -135,14 +136,41 @@ namespace DataStruct_Weekly
             expectedAv = 5;
             Console.WriteLine(Activity3_Test(myList2, expectedSum, expectedAv));
 
-            int[] myList3 = { 8, 40, 21};
+            int[] myList3 = { 8, 40, 21 };
             expectedSum = 69;
             expectedAv = 23;
             Console.WriteLine(Activity3_Test(myList3, expectedSum, expectedAv));
         }
+
+        //Write a program in C# Sharp to display the multiplication table of a given integer.
+        public static void Activity4(int input)
+        {
+            Console.WriteLine("\nActivity4 :");
+
+            string[] multiTable = CreateTable(input);
+
+            PrintTable<string>(ref multiTable);
+        }
+
+        static string[] CreateTable(int input)
+        {
+            string[] multiTable = new string[12];
+
+            for (int i = 1; i <= 12; i++)
+            {
+                multiTable[i - 1] = $"{input} X {i} = {i * input}";
+            }
+            return multiTable;
+        }
+
+            public static void PrintTable<T>(ref T[] table)
+        {
+            Console.WriteLine("Arithmetic operations on the given numbers:");
+
+            for(int i = 0; i < table.Length; i++)
+            {
+                    Console.WriteLine(table[i]);
+            }
+        }
     }
-
-
-
-    
 }
