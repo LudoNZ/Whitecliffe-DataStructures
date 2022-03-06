@@ -38,6 +38,7 @@ namespace DataStruct_Weekly
             Console.WriteLine(Activity1_Test(7, 3, 10));
         }
 
+
         //Write a Temperature conversion program that converts Celsius to Fahrenheit and vice versa.
         public static string Activity2(float degree, string FOrC)
         {
@@ -77,5 +78,71 @@ namespace DataStruct_Weekly
             Console.WriteLine(Activity2_Test(89f, "c", "192.2"));
             Console.WriteLine(Activity2_Test(89f, "k", "please enter f or c as unit"));
         }
+
+
+        //Write a C# program that takes 10 numbers as input from user and find their sum and average
+        public static void Activity3()
+        {
+            int[] myList = new int[10];
+
+            //input 10 numbers
+            for(int i = 0; i < 10; i++)
+            {
+                Console.Write($"Enter Number {i + 1} of 10: ");
+                myList[i] = int.Parse(Console.ReadLine());
+            }
+
+            //display result
+            Console.WriteLine($"Sum = {ListSum(myList)} \nAverage = {ListAverage(myList)}");
+        }
+
+        static int ListSum(int[] myList)
+        {
+            //calc sum
+            int sum = 0;
+            for (int i = 0; i < myList.Length; i++)
+            {
+                sum += myList[i];
+            }
+
+            return sum;
+        }
+
+        static float ListAverage(int[] myList)
+        {
+            return ListSum(myList) / myList.Length;
+        }
+
+        static bool Activity3_Test(int[] myList, int expectedSum, int expectedAv)
+        {
+            return ListSum(myList) == expectedSum && ListAverage(myList) == expectedAv;
+        }
+
+        public static void Activity3_AutoTest()
+        {
+            Console.WriteLine("\nActivity3 Auto Tests:");
+
+            int expectedSum;
+            int expectedAv;
+
+            int[] myList1 = { 5, 5, 5, 5, 5, 5, 5, 5, 5, 5 };
+            expectedSum = 50;
+            expectedAv = 5;
+            Console.WriteLine(Activity3_Test(myList1, expectedSum, expectedAv));
+
+            int[] myList2 = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            expectedSum = 55;
+            expectedAv = 5;
+            Console.WriteLine(Activity3_Test(myList2, expectedSum, expectedAv));
+
+            int[] myList3 = { 8, 40, 21};
+            expectedSum = 69;
+            expectedAv = 23;
+            Console.WriteLine(Activity3_Test(myList3, expectedSum, expectedAv));
+        }
     }
+
+
+
+    
 }
