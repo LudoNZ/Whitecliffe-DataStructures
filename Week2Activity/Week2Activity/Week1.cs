@@ -155,21 +155,23 @@ namespace DataStruct_Weekly
 
         public static void Activity4_AutoTest()
         {
+            Console.WriteLine("\nActivity4 Auto Tests:");
+
             int input = 4;
 
             string[] expectedValue = {
-            "4 X 1 = 4",
-            "4 X 2 = 8",
-            "4 X 3 = 12",
-            "4 X 4 = 16",
-            "4 X 5 = 20",
-            "4 X 6 = 24",
-            "4 X 7 = 28",
-            "4 X 8 = 32",
-            "4 X 9 = 36",
-            "4 X 10 = 40",
-            "4 X 11 = 44",
-            "4 X 12 = 48"};
+                "4 X 1 = 4",
+                "4 X 2 = 8",
+                "4 X 3 = 12",
+                "4 X 4 = 16",
+                "4 X 5 = 20",
+                "4 X 6 = 24",
+                "4 X 7 = 28",
+                "4 X 8 = 32",
+                "4 X 9 = 36",
+                "4 X 10 = 40",
+                "4 X 11 = 44",
+                "4 X 12 = 48"};
 
             Console.WriteLine(ArrayMatch<string>(expectedValue, CreateTable(input)));
 
@@ -194,18 +196,18 @@ namespace DataStruct_Weekly
             input = 100;
 
             expectedValue = new string[] {
-            "100 X 1 = 100",
-            "100 X 2 = 200",
-            "100 X 3 = 300",
-            "100 X 4 = 400",
-            "100 X 5 = 500",
-            "100 X 6 = 600",
-            "100 X 7 = 700",
-            "100 X 8 = 800",
-            "100 X 9 = 900",
-            "100 X 10 = 1000",
-            "100 X 11 = 1100",
-            "100 X 12 = 1200"};
+                "100 X 1 = 100",
+                "100 X 2 = 200",
+                "100 X 3 = 300",
+                "100 X 4 = 400",
+                "100 X 5 = 500",
+                "100 X 6 = 600",
+                "100 X 7 = 700",
+                "100 X 8 = 800",
+                "100 X 9 = 900",
+                "100 X 10 = 1000",
+                "100 X 11 = 1100",
+                "100 X 12 = 1200"};
 
             Console.WriteLine(ArrayMatch<string>(expectedValue, CreateTable(input)));
 
@@ -225,8 +227,6 @@ namespace DataStruct_Weekly
 
         public static void PrintTable<T>(T[] table)
         {
-            Console.WriteLine("Arithmetic operations on the given numbers:");
-
             for (int i = 0; i < table.Length; i++)
             {
                 Console.WriteLine(table[i]);
@@ -253,5 +253,25 @@ namespace DataStruct_Weekly
 
             return match;
         }
+
+
+        public static void Activity5(int input1, int input2) 
+        {
+        
+            string[] result = new string[] {
+                $"\nArithmetic operations on the given numbers:",
+                    $"{input1} + {input2} = {input1 + input2}",
+                    $"{input1} - {input2} = {input1 - input2}",
+                    $"{input1} x {input2} = {input1 * input2}",
+                    $"{input1} / {input2} = {input1 / input2}",
+                    $"{input1} mod {input2} = {input1 % input2}"
+                    };
+
+            //PrintTable<string>(result);
+
+            PrintTable<string>(result);
+        }
+
+
     }
 }

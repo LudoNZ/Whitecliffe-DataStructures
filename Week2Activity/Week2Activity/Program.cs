@@ -13,10 +13,9 @@ namespace DataStruct_Weekly
             Week1.Activity1_AutoTest();
             Week1.Activity2_AutoTest();
             Week1.Activity3_AutoTest();
-
-            Week1.Activity4(12);
-            Week1.Activity4(100);
             Week1.Activity4_AutoTest();
+
+            Week1.Activity5(2, 4);
 
             //Week2.Activity1();
             //Week2.Activity2();
