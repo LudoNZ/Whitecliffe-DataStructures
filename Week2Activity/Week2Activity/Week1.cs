@@ -255,11 +255,11 @@ namespace DataStruct_Weekly
         }
 
 
-        public static void Activity5(int input1, int input2) 
+        public static string[] Activity5(int input1, int input2) 
         {
         
             string[] result = new string[] {
-                $"\nArithmetic operations on the given numbers:",
+                $"Arithmetic operations on the given numbers:",
                     $"{input1} + {input2} = {input1 + input2}",
                     $"{input1} - {input2} = {input1 - input2}",
                     $"{input1} x {input2} = {input1 * input2}",
@@ -267,11 +267,62 @@ namespace DataStruct_Weekly
                     $"{input1} mod {input2} = {input1 % input2}"
                     };
 
-            //PrintTable<string>(result);
-
-            PrintTable<string>(result);
+            return result;
         }
 
+        static bool Activity5_Test(int input1, int input2, string[] expectedOutput)
+        {
+            return ArrayMatch<string>(Activity5(input1, input2), expectedOutput);
+        }
 
+        public static void Activity5_AutoTest()
+        {
+            Console.WriteLine("\nActivity5 Auto Tests:");
+
+            int input1, input2;
+            string[] expectedResult;
+
+
+            input1 = 2;
+            input2 = 4;
+            expectedResult = new string[]{
+                "Arithmetic operations on the given numbers:",
+                "2 + 4 = 6",
+                "2 - 4 = -2",
+                "2 x 4 = 8",
+                "2 / 4 = 0",
+                "2 mod 4 = 2" };
+
+            Console.WriteLine(Activity5_Test(input1, input2, expectedResult));
+
+
+            input1 = 4;
+            input2 = 4;
+            expectedResult = new string[]{
+                "Arithmetic operations on the given numbers:",
+                "4 + 4 = 8",
+                "4 - 4 = 0",
+                "4 x 4 = 16",
+                "4 / 4 = 1",
+                "4 mod 4 = 0" };
+
+            Console.WriteLine(Activity5_Test(input1, input2, expectedResult));
+
+
+            input1 = 10;
+            input2 = 13;
+            expectedResult = new string[]{
+                "Arithmetic operations on the given numbers:",
+                "10 + 13 = 23",
+                "10 - 13 = -3",
+                "10 x 13 = 130",
+                "10 / 13 = 0",
+                "10 mod 13 = 10" };
+
+            Console.WriteLine(Activity5_Test(input1, input2, expectedResult));
+            
+
+
+        }
     }
 }
