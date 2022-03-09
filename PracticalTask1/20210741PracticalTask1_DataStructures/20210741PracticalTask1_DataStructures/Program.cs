@@ -11,6 +11,7 @@ namespace HospitalRecords_20210741
             Console.WriteLine("Starting Programme... Obtaining records...");
 
             Computer.ObtainRecords();
+
         }
 
         //Build List<Patient> patientRecords

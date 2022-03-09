@@ -47,10 +47,9 @@ namespace HospitalRecords_20210741
 
                     Console.WriteLine($"**Patient records have been recorded successfully**\n   " +
                         $"{counter} Patients in database");
-
-                    Menu();
                 }
             }
+            Menu();
         }
 
         static void Menu()
@@ -97,8 +96,6 @@ namespace HospitalRecords_20210741
             {
                 Console.WriteLine($"{patientId}\n" +
                                     $" The search found no matching patient");
-
-                Menu();
             }
         }
 
@@ -117,9 +114,6 @@ namespace HospitalRecords_20210741
 
                 Console.WriteLine($"\nRecords for patient {patientName} removed successfully");
             }
-
-            Menu();
-
         }
 
         static void PrintRecords()
