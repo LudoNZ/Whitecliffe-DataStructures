@@ -60,8 +60,8 @@ namespace HospitalRecords_20210741
 
             if (key.Key == ConsoleKey.S)
             {
-                Console.WriteLine("Enter Patient ID to search: ");
-                string search = Console.ReadLine();
+                Console.WriteLine("\nEnter Patient ID to search: ");
+                string search = Console.ReadLine().ToUpper();
 
                 SearchRecords(search);
 
@@ -79,15 +79,47 @@ namespace HospitalRecords_20210741
         {
             //Patient patient = patientRecords.Contains("NNK254");
             //patientId = patientRecords.FindIndex(e => e."NNK254");
-            Console.WriteLine($"Searching{patientId}");
+            Console.WriteLine($"....Searching {patientId}");
 
             Patient patient = patientRecords.Find(item => item.PatientId == patientId);
 
-            Console.WriteLine($"Search complete, Found: {patient.Name}");
+            if(patient != null)
+            {
+                Console.WriteLine($"Search succesfull, Found: {patient.Name}");
 
-            patient.ToString();
+                Console.WriteLine(patient.ToString());
+
+                AskRemove(patient);
+            }
+
+
+            else
+            {
+                Console.WriteLine($"{patientId}\n" +
+                                    $" The search found no matching patient");
+
+                Menu();
+            }
+        }
+
+        static void AskRemove(Patient patient)
+        {
+            Console.WriteLine("Would you like to remove the patients record(s)?\n" +
+                                "Y or N?");
+
+            ConsoleKeyInfo key = Console.ReadKey();
+
+            if (key.Key == ConsoleKey.Y)
+            {
+                string patientName = patient.Name;
+
+                patientRecords.Remove(patient);
+
+                Console.WriteLine($"\nRecords for patient {patientName} removed successfully");
+            }
 
             Menu();
+
         }
 
         static void PrintRecords()

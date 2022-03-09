@@ -18,10 +18,10 @@ namespace HospitalRecords_20210741
 
         public override string ToString()
         {
-            return $"Patient ID: {this.PatientId}\n " +
-                                $"Name: {this.Name}\n" +
-                                $"Check In Date: {this.CheckInDate}\n" +
-                                $"Assigned Medical Personnel: {this.AssignedMedicalPersonnel}";
+            return $"  Patient ID: {this.PatientId}\n" +
+                                $"  Name: {this.Name}\n" +
+                                $"  Check In Date: {this.CheckInDate}\n" +
+                                $"  Assigned Medical Personnel: {this.AssignedMedicalPersonnel}";
         }
 
     }
