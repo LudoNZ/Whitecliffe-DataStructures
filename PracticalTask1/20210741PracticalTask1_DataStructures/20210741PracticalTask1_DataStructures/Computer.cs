@@ -49,10 +49,9 @@ namespace HospitalRecords_20210741
                         $"{counter} Patients in database");
                 }
             }
-            Menu();
         }
 
-        static void Menu()
+        public static void Menu()
         {
             Console.WriteLine($"Press 'S' for Search, Press 'E' for Exit");
             ConsoleKeyInfo key = Console.ReadKey();
@@ -119,9 +118,9 @@ namespace HospitalRecords_20210741
         static void PrintRecords()
         {
             Console.WriteLine("loopy");
-            foreach (Patient pat in patientRecords)
+            foreach (Patient patient in patientRecords)
             {
-                Console.WriteLine(pat.ToString());
+                Console.WriteLine(patient.ToString());
             }
         }
     }

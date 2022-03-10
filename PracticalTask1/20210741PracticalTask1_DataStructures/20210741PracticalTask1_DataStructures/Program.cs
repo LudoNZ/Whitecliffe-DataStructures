@@ -12,6 +12,7 @@ namespace HospitalRecords_20210741
 
             Computer.ObtainRecords();
 
+            Computer.Menu();
         }
 
         //Build List<Patient> patientRecords
