@@ -39,30 +39,34 @@ namespace ExpressionValidation_20210741
                     }
                     else
                     {
-                        char x = stack.Pop();
+                        char _ = stack.Pop();
                     }
                 }
             }
             return stack.Count == 0;
         }
 
+        //Input for user
         static void UserControl()
         {
-            Console.Write("please enter an expression to validate: ");
-            Console.ReadLine();
+            Console.Write("Enter expression to validate: ");
+            string expression = Console.ReadLine();
 
-            Console.Write("please enter the types of bracket to test");
+            Console.Write("  - characters to match: ");
+            char openBracket = Console.ReadKey().KeyChar;
+
+            Console.Write(" and ");
+            char closeBracket = Console.ReadKey().KeyChar;
+            Console.WriteLine();
+
+            string result = ValidateExpression(expression, openBracket, closeBracket) ? "correct" : "incorrect";
+            Console.WriteLine($"Result: {result}");
         }
 
-        static bool Test(string input, char typeOpen, char typeClosed, bool expectedResult)
-        {
-            //Console.Write($"Test: {input}\n   results: ");
-            return ValidateExpression(input, typeOpen, typeClosed) == expectedResult;
-        }
-
+        //Automated tests designed to check if working.
         static void AutoTest()
         {
-            Console.WriteLine("Testing:");
+            Console.WriteLine("Auto Test Results:");
             Console.WriteLine(Test("[3, 4], [5.6, 7], [[8, 9]", '[', ']', false));
             Console.WriteLine(Test("{{a, b, c}, {d}, {f, g, h, i}}", '{', '}', true));
             Console.WriteLine(Test("(<Hello>, <Is it me you’re looking for?)", '<', '>', false));
@@ -71,5 +75,10 @@ namespace ExpressionValidation_20210741
             Console.WriteLine(Test("{{{}}}", '{', '}', true));
         }
 
+        static bool Test(string input, char typeOpen, char typeClosed, bool expectedResult)
+        {
+            //Console.Write($"Test: {input}\n   results: ");
+            return ValidateExpression(input, typeOpen, typeClosed) == expectedResult;
+        }
     }
 }
