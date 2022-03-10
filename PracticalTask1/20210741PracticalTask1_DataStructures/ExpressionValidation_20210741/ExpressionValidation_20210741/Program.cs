@@ -5,7 +5,6 @@ namespace ExpressionValidation_20210741
 {
     class Program
     {
-        
         static void Main(string[] args)
         {
             Console.WriteLine("Student 20210741 Working some magic!!");
