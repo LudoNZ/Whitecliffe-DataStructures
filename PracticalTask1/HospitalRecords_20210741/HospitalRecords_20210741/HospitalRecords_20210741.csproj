@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>_20210741PracticalTask1_DataStructures</RootNamespace>
+    <RootNamespace>_HospitalRecords_20210741</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
