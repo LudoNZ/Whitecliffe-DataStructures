@@ -10,12 +10,11 @@ namespace HospitalRecords_20210741
         {
             Console.WriteLine("Starting Programme... Obtaining records...");
 
+            //Build List<Patient> patientRecords from File
             Computer.ObtainRecords();
 
             Computer.Menu();
         }
-
-        //Build List<Patient> patientRecords
         
 
     }

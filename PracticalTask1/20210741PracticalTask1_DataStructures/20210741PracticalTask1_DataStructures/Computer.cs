@@ -12,7 +12,7 @@ namespace HospitalRecords_20210741
         public static void ObtainRecords()
         {
             //Use path to the ListOfPatients.txt here
-            string path = @"C:\Users\ludob\Desktop\Whitecliffe-DataStructures\PracticalTask1\ListOfPatients.txt";
+            string path = @"\ListOfPatients.txt";
 
             //an array to store info on one patient
             string[] oneRecord;
