@@ -7,7 +7,7 @@ namespace TicketingSystem_20210741
 {
     public class SalesAssistant
     {
-        Timer timerSalesAssistant;
+        public Timer timerSalesAssistant;
 
         Queue<Customer> customerQueue;
 
@@ -16,11 +16,17 @@ namespace TicketingSystem_20210741
             customerQueue = Program.customersQueue;
 
             timerSalesAssistant = new System.Timers.Timer(time);
-            timerSalesAssistant.Elapsed += SeeCustomer;
+            timerSalesAssistant.Elapsed += TimerElapsed;
             timerSalesAssistant.AutoReset = true;
             timerSalesAssistant.Start();
         }
-        public void SeeCustomer(object sender, ElapsedEventArgs e)
+
+        public void TimerElapsed(object sender, ElapsedEventArgs e)
+        {
+            SeeCustomer();
+        }
+
+        public void SeeCustomer()
         {
             Console.WriteLine("\nSales Assistant is ready to see the next customer.");
 

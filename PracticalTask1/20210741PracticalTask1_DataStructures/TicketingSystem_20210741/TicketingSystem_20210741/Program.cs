@@ -12,22 +12,40 @@ namespace TicketingSystem_20210741
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Good Morning Ticketing System!");
+            Console.WriteLine("Good Morning Ticketing System!\n");
 
-            SetTimerCustomer();
+            SalesAssistant salesAssistant = new SalesAssistant(5000);
+            salesAssistant.SeeCustomer();
 
-            SalesAssistant phil = new SalesAssistant(5000);
+            SetTimerCustomer(3000);
 
             //Exit App
-            Console.WriteLine("\nPress the Enter key to exit the application...\n");
+            Console.WriteLine("\n***Press Enter to Stop Customers arriving***\n");
             Console.ReadLine();
             timerCustomer.Stop();
             timerCustomer.Dispose();
+
+            Console.WriteLine($"\n***press 'c' to add a customer to queue. Any key to Exit****");
+            
+            char createCustomer = 'c';
+
+            createCustomer = Console.ReadKey().KeyChar;
+
+            while (createCustomer == 'c')
+            {
+                customersQueue.Enqueue(new Customer());
+                createCustomer = Console.ReadKey().KeyChar;
+            }
+            
+            Console.ReadLine();
+
+            salesAssistant.timerSalesAssistant.Stop();
+            salesAssistant.timerSalesAssistant.Dispose();
         }
         //Create a timer for Customers.
-        private static void SetTimerCustomer()
+        private static void SetTimerCustomer(int time)
         {
-            timerCustomer = new System.Timers.Timer(3000);
+            timerCustomer = new System.Timers.Timer(time);
             timerCustomer.Elapsed += TimerCustomer_Elapsed;
             timerCustomer.AutoReset = true;
             timerCustomer.Start();
@@ -40,12 +58,29 @@ namespace TicketingSystem_20210741
 
         public static void ListQueue()
         {
-            int count = 0;
-            Console.Write($"The customers with the following tickets are in the queue: ");
-        
-            foreach(Customer c in customersQueue)
+            int count = customersQueue.Count;
+
+            if (count > 0)
             {
-                Console.Write(customersQueue);
+                Console.Write($"The customers with the following tickets are in the queue: [");
+
+                foreach (Customer c in customersQueue)
+                {
+                    if (count > 1)
+                    {
+                        Console.Write($"{c.TicketNumber}, ");
+                        count--;
+                    }
+                    else
+                    {
+                        Console.Write($"{c.TicketNumber}]");
+                    }
+                }
+                Console.WriteLine();
+            }
+            else
+            {
+                Console.WriteLine("there are no customers in the queue");
             }
         }
     }
