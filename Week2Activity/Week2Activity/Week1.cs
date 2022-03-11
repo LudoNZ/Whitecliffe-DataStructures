@@ -320,9 +320,45 @@ namespace DataStruct_Weekly
                 "10 mod 13 = 10" };
 
             Console.WriteLine(Activity5_Test(input1, input2, expectedResult));
-            
+        }
 
+
+        //Write a C# program that takes distance and time as input and displays the speed in, meters per second, kilometres per hour and miles per hour.
+
+        public static void Activity6()
+        {
+            int meters, hours, minutes, seconds, TotalSeconds;
+
+            //input from user
+            Console.Write("Input distance (meters): ");
+            meters = 50000; //int.Parse(Console.ReadLine());
+
+            Console.Write("Input time (hours): ");
+            hours = 1; //int.Parse(Console.ReadLine());
+            
+            Console.Write("Input time (minutres): ");
+            minutes = 35; // int.Parse(Console.ReadLine());
+
+            Console.Write("Input time (seconds): ");
+            seconds = 56; // int.Parse(Console.ReadLine());
+
+            TotalSeconds = (hours * 60 + minutes) * 60 + seconds;
 
         }
+        static float MetersPerSecond(int meters, int TotalSeconds)
+        {
+            return meters / TotalSeconds;
+        }
+
+        static float KMsPerHour(int meters, int TotalSeconds)
+        {
+            return (meters / 1000 )/ (TotalSeconds / (60 * 60));
+        }
+
+        static float MilesPerHour(int meters, int TotalSeconds)
+        {
+            return (float)(meters / 1609.344 / (TotalSeconds / (60 * 60)));
+        }
+
     }
 }

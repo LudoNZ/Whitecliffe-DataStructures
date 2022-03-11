@@ -76,8 +76,10 @@ namespace DataStruct_Weekly
             //Loop through each line of tables
             for (int j = 0; j < 12; j += 4)
             {
+                //for each row x12 of each set of tables
                 for (int row = 1; row < 13; row++)
                 {
+
                     for (int i = 1 + j; i < j + 5; i++)
                     {
                         Console.Write($" {Week2.ReLength(i, 5)} x {Week2.ReLength(row, 2)} = {Week2.ReLength(i * row, 3)} ");

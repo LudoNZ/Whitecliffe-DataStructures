@@ -6,4 +6,10 @@
     <RootNamespace>_20210741PracticalTask1_DataStructures</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Update="ListOfPatients.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
