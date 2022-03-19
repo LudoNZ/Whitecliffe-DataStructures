@@ -16,6 +16,7 @@ namespace ExpressionValidation_20210741
             Console.ReadLine();
         }
 
+        //Check Expression has correct amount of provided brackets.
         static bool ValidateExpression(string expression, char openChar, char closeChar)
         {
             Stack<char> stack = new Stack<char>();
@@ -38,14 +39,14 @@ namespace ExpressionValidation_20210741
                     }
                     else
                     {
-                        char _ = stack.Pop();
+                        stack.Pop();
                     }
                 }
             }
             return stack.Count == 0;
         }
 
-        //Input for user
+        //hand over control to user for input.
         static void UserControl()
         {
             Console.Write("Enter expression to validate: ");
@@ -62,7 +63,7 @@ namespace ExpressionValidation_20210741
             Console.WriteLine($"Result: {result}");
         }
 
-        //Automated tests designed to check if working.
+        //Run tests to verify the code solution against pre determined test inputs.
         static void AutoTest()
         {
             Console.WriteLine("Auto Test Results:");

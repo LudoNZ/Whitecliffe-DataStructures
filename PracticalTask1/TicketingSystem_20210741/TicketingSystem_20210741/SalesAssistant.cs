@@ -11,6 +11,7 @@ namespace TicketingSystem_20210741
 
         Queue<Customer> customerQueue;
 
+        //Construct Sales assistant capable of seeing a customer every....
         public SalesAssistant(int time)
         {
             customerQueue = Program.customersQueue;
@@ -26,6 +27,7 @@ namespace TicketingSystem_20210741
             SeeCustomer();
         }
 
+        //Sales assistant Sees next customer
         public void SeeCustomer()
         {
             Console.WriteLine("\nSales Assistant is ready to see the next customer.");

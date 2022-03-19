@@ -51,6 +51,7 @@ namespace HospitalRecords_20210741
             }
         }
 
+        //Navigate to main menu for user input
         public static void Menu()
         {
             Console.WriteLine($"Press 'S' for Search, Press 'E' for Exit");
@@ -73,10 +74,9 @@ namespace HospitalRecords_20210741
 
         }
 
+        //Search through List for match PatientID
         static void SearchRecords(string patientId)
         {
-            //Patient patient = patientRecords.Contains("NNK254");
-            //patientId = patientRecords.FindIndex(e => e."NNK254");
             Console.WriteLine($"....Searching {patientId}");
 
             Patient patient = patientRecords.Find(item => item.PatientId == patientId);
@@ -98,6 +98,7 @@ namespace HospitalRecords_20210741
             }
         }
 
+        //ask to remove found patient from list
         static void AskRemove(Patient patient)
         {
             Console.WriteLine("Would you like to remove the patients record(s)?\n" +
@@ -115,9 +116,9 @@ namespace HospitalRecords_20210741
             }
         }
 
+        //print List of patients
         static void PrintRecords()
         {
-            Console.WriteLine("loopy");
             foreach (Patient patient in patientRecords)
             {
                 Console.WriteLine(patient.ToString());

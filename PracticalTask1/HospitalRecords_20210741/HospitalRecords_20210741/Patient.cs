@@ -16,6 +16,7 @@ namespace HospitalRecords_20210741
             this.AssignedMedicalPersonnel = assignedMedicalPersonnel;
         }
 
+        //Print Patient info
         public override string ToString()
         {
             return $"  Patient ID: {this.PatientId}\n" +

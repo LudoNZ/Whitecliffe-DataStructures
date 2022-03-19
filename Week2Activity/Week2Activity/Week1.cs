@@ -24,7 +24,7 @@ namespace DataStruct_Weekly
 
         static bool Activity1_Test(int int1, int int2, int expectedResult)
         {
-            return expectedResult == Activity1(int1, int2);
+            return Activity1(int1, int2) == expectedResult;
         }
 
         public static void Activity1_AutoTest()

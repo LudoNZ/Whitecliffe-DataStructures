@@ -7,7 +7,6 @@ namespace TicketingSystem_20210741
     class Program
     {
         private static System.Timers.Timer timerCustomer;
-
         public static Queue<Customer> customersQueue = new Queue<Customer>();
 
         static void Main(string[] args)
@@ -16,33 +15,30 @@ namespace TicketingSystem_20210741
 
             SalesAssistant salesAssistant = new SalesAssistant(5000);
             salesAssistant.SeeCustomer();
-
+            
+            //Create a Customer every 3 seconds untill press enter
             SetTimerCustomer(3000);
-
-            //Exit App
+            
             Console.WriteLine("\n***Press Enter to Stop Customers arriving***\n");
             Console.ReadLine();
             timerCustomer.Stop();
             timerCustomer.Dispose();
 
+            //**BONUS MATERIAL- Manually add customers
             Console.WriteLine($"\n***press 'c' to add a customer to queue. Any key to Exit****");
-            
-            char createCustomer = 'c';
 
-            createCustomer = Console.ReadKey().KeyChar;
+            char createCustomer = Console.ReadKey().KeyChar;
 
             while (createCustomer == 'c')
             {
                 customersQueue.Enqueue(new Customer());
                 createCustomer = Console.ReadKey().KeyChar;
             }
-            
-            Console.ReadLine();
 
             salesAssistant.timerSalesAssistant.Stop();
             salesAssistant.timerSalesAssistant.Dispose();
         }
-        //Create a timer for Customers.
+        //Create a timer for Customers to arrive every....
         private static void SetTimerCustomer(int time)
         {
             timerCustomer = new System.Timers.Timer(time);
@@ -56,6 +52,7 @@ namespace TicketingSystem_20210741
             customersQueue.Enqueue(new Customer());
         }
 
+        //Print Customer Queue info
         public static void ListQueue()
         {
             int count = customersQueue.Count;
