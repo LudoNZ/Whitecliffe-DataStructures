@@ -6,13 +6,13 @@ namespace BubbleSortCustomerData
 {
     class Customer
     {
-        public string name, rating, address;
+        public string Name, Rating, Address;
 
-        public Customer(string Name, string Rating, string Address)
+        public Customer(string name, string rating, string address)
         {
-            this.name = Name;
-            this.rating = Rating;
-            this.address = Address;
+            this.Name = name;
+            this.Rating = rating;
+            this.Address = address;
         }
 
         public static string[] UpLoad()
@@ -44,90 +44,143 @@ namespace BubbleSortCustomerData
 
         public static void DisplayList(List<Customer> list)
         {
-            Console.WriteLine("\n***Display the original(unsorted) collection.***");
             foreach (Customer c in list)
             {
-                Console.WriteLine($"{c.name}, {c.rating}, {c.address}");
+                Console.WriteLine($"{c.Name}, {c.Rating}, {c.Address}");
             }
         }
 
-        public static void BubbleSortRating(List<Customer> list)
+        public static void BubbleSort(List<Customer> list, string property, bool ascending)
         {
-            int counter = 0;
+
+            int comparisons = 0;
 
             // for each customer in myList
-            for (int j = 0; j < list.Count - 1; j++)
+            for (int confirmed = 0; confirmed < list.Count - 1; confirmed++)
             {
-                //bool to check if array is sorted for early break.
+                //reset status to true for early break.
                 bool sorted = true;
 
-                for (int i = 0; i < list.Count - 1 - j; i++)
+                //for each customer in list
+                for (int customer = 0; customer < list.Count - 1 - confirmed; customer++)
                 {
+                    int r1 = 0;
+                    int r2 = 0;
 
-                    //get values to compare
-                    int r1L = list[i].rating.Length - 1;
-                    int r1 = list[i].rating[r1L];
+                    //Get Property values
+                    switch (property)
+                    {
+                        case "rating" :
+                            //get values to compare
+                            int r1L = list[customer].Rating.Length - 1;
+                            r1 = list[customer].Rating[r1L];
 
-                    int r2L = list[i + 1].rating.Length - 1;
-                    int r2 = list[i + 1].rating[r2L];
+                            int r2L = list[customer + 1].Rating.Length - 1;
+                            r2 = list[customer + 1].Rating[r2L];
+                            break;
+
+                        case "name":
+                            int[] rank = Alphabetise(list[customer].Name, list[customer + 1].Name);
+                                r1 = rank[0];
+                                r2 = rank[1];
+                            break;
+
+                        default:
+                            break;
+                    }
+
 
                     //The Swap check
-                    if (r1 > r2)
+                    comparisons++;
+
+                    if (ascending)
                     {
-                        sorted = false;
-                        Customer temp = list[i];
-                        list[i] = list[i + 1];
-                        list[i + 1] = temp;
+                            if (r1 > r2)
+                            {
+                                sorted = false;
+                                Customer temp = list[customer];
+                                list[customer] = list[customer + 1];
+                                list[customer + 1] = temp;
+                            }
+                    else
+                            if (r1 < r2)
+                            {
+                                sorted = false;
+                                Customer temp = list[customer];
+                                list[customer] = list[customer + 1];
+                                list[customer + 1] = temp;
+                            }
+
                     }
-                    counter++;
+                    
                 }
                 //check if Array items are in order.
                 if (sorted == true)
                 {
-                    Console.WriteLine($"\nBreak Early. j = {j}");
+                    Console.WriteLine($"\nBreak Early. Iterations = {confirmed} / {list.Count} ");
                     break;
                 }
             }
-            Console.WriteLine($"\n####Bubble Sort comparisons: {counter}");
+            Console.WriteLine($"\n####Bubble Sort comparisons: {comparisons}");
 
         }
 
-        public static void BubbleSortName(List<Customer> list)
+        static int[] Alphabetise(string check1, string check2)
         {
-            int counter = 0;
+            int rank1 = 0; 
+            int rank2 = 0;
 
-            // for each customer in myList
-            for (int j = 0; j < list.Count - 1; j++)
+            int charCheck = 0;
+
+            while (rank1 == rank2)
             {
-                //bool to check if array is sorted for early break.
-                bool sorted = true;
+                rank1 += check1[charCheck];
+                rank2 += check2[charCheck];
 
-                for (int i = 0; i < list.Count - 1 - j; i++)
-                {
-                    //get values to compare
-                    string r1 = list[i].name;
-                    string r2 = list[i + 1].name;
-
-                    //The Swap check
-                    if (r1 > r2)
-                    {
-                        sorted = false;
-                        Customer temp = list[i];
-                        list[i] = list[i + 1];
-                        list[i + 1] = temp;
-                    }
-                    counter++;
-                }
-                //check if Array items are in order.
-                if (sorted == true)
-                {
-                    Console.WriteLine($"\nBreak Early. j = {j}");
-                    break;
-                }
+                charCheck++;
             }
-            Console.WriteLine($"\n####Bubble Sort comparisons: {counter}");
 
+            int[] results = { rank1, rank2 };
+
+            return results;
         }
+
+        //public static void BubbleSortName(List<Customer> list)
+        //{
+        //    int counter = 0;
+
+        //    // for each customer in myList
+        //    for (int j = 0; j < list.Count - 1; j++)
+        //    {
+        //        //bool to check if array is sorted for early break.
+        //        bool sorted = true;
+
+        //        for (int i = 0; i < list.Count - 1 - j; i++)
+        //        {
+        //            //get values to compare
+        //            string r1 = list[i].Name;
+        //            string r2 = list[i + 1].Name;
+
+        //            //The Swap check
+        //            if (r1 > r2)
+        //            {
+        //                sorted = false;
+        //                Customer temp = list[i];
+        //                list[i] = list[i + 1];
+        //                list[i + 1] = temp;
+        //            }
+        //            counter++;
+        //        }
+        //        //check if Array items are in order.
+        //        if (sorted == true)
+        //        {
+        //            Console.WriteLine($"\nBreak Early. j = {j}");
+        //            break;
+        //        }
+        //    }
+        //    Console.WriteLine($"\n####Bubble Sort comparisons: {counter}");
+
+        //}
 
         static void Swap<T>(ref T lhs, ref T rhs)
         {

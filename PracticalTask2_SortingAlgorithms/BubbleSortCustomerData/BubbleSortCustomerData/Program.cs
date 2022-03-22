@@ -21,21 +21,25 @@ namespace BubbleSortCustomerData
             Customer.ConstructList(dataSet);
 
             //Display the original(unsorted) collection.
+            Console.WriteLine("\n***Display the original(unsorted) collection.***");
             Customer.DisplayList(myList);
 
-            //Use a bubble sort.
+            //USING BUBBLE SORT.....
 
             //Sort by Customer rating ascending
-            Customer.BubbleSortRating(myList);
+            Customer.BubbleSort(myList, "rating", true);
+            Console.WriteLine("\n***sort rating ascending***");
+            Customer.DisplayList(myList);
+
+            Customer.BubbleSort(myList, "rating", false);
+            Console.WriteLine("\n***sort rating descending***");
+            Customer.DisplayList(myList);
 
             //Sort by Customer.name descending
+            Customer.BubbleSort(myList, "name", false);
+            Console.WriteLine("\n***sort name descending***");
+            Customer.DisplayList(myList);
 
-
-            Console.WriteLine("\n***Display the Sorted collection. Customer Ranking Ascending***");
-            foreach (Customer customer in myList)
-            {
-                Console.WriteLine($"{customer.name}, {customer.rating}, {customer.address}");
-            }
 
             Console.ReadLine();
         }
