@@ -27,19 +27,20 @@ namespace BubbleSortCustomerData
             //USING BUBBLE SORT.....
 
             //Sort by Customer rating ascending
-            Customer.BubbleSort(myList, "rating", true);
             Console.WriteLine("\n***sort rating ascending***");
-            Customer.DisplayList(myList);
-
-            Customer.BubbleSort(myList, "rating", false);
-            Console.WriteLine("\n***sort rating descending***");
+            Customer.BubbleSort(myList, "rating", true);
+            
             Customer.DisplayList(myList);
 
             //Sort by Customer.name descending
-            Customer.BubbleSort(myList, "name", false);
             Console.WriteLine("\n***sort name descending***");
+            Customer.BubbleSort(myList, "name", false);
             Customer.DisplayList(myList);
 
+            //Sort by Customer.Address descending
+            Console.WriteLine("\n***sort address descending***");
+            Customer.BubbleSort(myList, "address", false);
+            Customer.DisplayList(myList);
 
             Console.ReadLine();
         }
