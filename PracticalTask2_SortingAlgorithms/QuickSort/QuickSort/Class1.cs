@@ -11,8 +11,7 @@ namespace BuiltInSort
         public String ItemName { get; set; }
         public String Category { get; set; }
         // constructor
-        public CatalogueItem(Int32 newId, String newName, String
-        newCategory)
+        public CatalogueItem(Int32 newId, String newName, String newCategory)
         {
             Id = newId;
             ItemName = newName;
