@@ -8,6 +8,10 @@ namespace QuickSort
 {
     class QuickSort
     {
+        //Static Counters
+        private static int CountComparisons;
+        private static int CountSwaps;
+
         private CatalogueItem[] items;
         private int number;
         public void Sort(CatalogueItem[] values)
@@ -17,10 +21,30 @@ namespace QuickSort
             {
                 return;
             }
+
+            //Start a Timer
+            System.Diagnostics.Stopwatch timer = System.Diagnostics.Stopwatch.StartNew();
+            
+            //set Static Counter sefault value
+            CountComparisons = 0;
+            CountSwaps = 0;
+
             items = values;
             number = values.Length;
             Quicksort(0, number - 1);
+
+            //stop timer and convert type to string
+            timer.Stop();
+            string timeTaken = timer.ElapsedMilliseconds > 0 
+                                ? timer.ElapsedMilliseconds.ToString() 
+                                : "0 milliseconds, pretty fast eh!";
+
+            Console.WriteLine($"Quick Sort complete:\n" +
+                                $"number of Comparisons made: {CountComparisons}\n" +
+                                $"number of Swaps executed: {CountSwaps}\n" +
+                                $"elapsed time(Milliseconds): {timeTaken}\n");
         }
+
         private void Quicksort(int low, int high)
         {
             int i = low, j = high;
@@ -34,12 +58,16 @@ namespace QuickSort
                 while (items[i].Id < pivot)
                 {
                     i++;
+
+                    CountComparisons++;
                 }
                 // If the current value from the right list is larger than the pivot
                 // element then get the next element from the right list
                 while (items[j].Id > pivot)
                 {
                     j--;
+
+                    CountComparisons++;
                 }
                 // If we have found a value in the left list which is larger than
                 // the pivot element and if we have found a value in the right list
@@ -51,6 +79,8 @@ namespace QuickSort
                     Exchange(i, j);
                     i++;
                     j--;
+
+                    CountSwaps++;
                 }
             }
             // Recursion
