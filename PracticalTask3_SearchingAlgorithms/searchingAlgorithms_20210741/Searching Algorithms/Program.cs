@@ -5,7 +5,8 @@ namespace Searching_Algorithms
 {
     class Program
     {
-        static int testCounter;
+        static int TestCounter;
+        static double timeTaken;
 
         //a List to store movie Titles
         public static string[] movieList;
@@ -48,46 +49,76 @@ namespace Searching_Algorithms
 
             index = binarySearch.RecursiveFind(movieList, "mermaid", 0, movieList.Length);
 
-            Console.WriteLine("\n****Testing Testing****");
 
-            Test("linear", "enough", "enough said");
+            TestCounter = 0;
+
+            Console.WriteLine("\n****Testing Linear Search****");
+
+            Test("linear", "enough", "World Is Not Enough");
             Test("linear", "mermaid", "Little Mermaid");
-            Test("linear", "negative test", "NO RESULT FOUND");
+            Test("linear", "negative test", "no result found");
+
+            PrintStats();
+
+
 
         }
 
         static void Test(string searchType, string testInput, string expectedResult)
         {
-            testCounter++;
+            TestCounter++;
 
             string result;
             int index;
             LinearSearch linearSearch = new LinearSearch();
+            BinarySearch binarySearch = new BinarySearch();
+
+            System.Diagnostics.Stopwatch timer = System.Diagnostics.Stopwatch.StartNew();
 
             //Select Search algorithm
             switch (searchType)
             {
                 case "linear":
                     index = linearSearch.Find(movieList, testInput);
-                    result = (index >= 0)
-                            ? movieList[index]
-                            :"NO RESULT FOUND";
-
                     break;
+
+                case "BinaryIterative":
+                    index = binarySearch.IterativeFind(movieList, testInput);
+                    break;
+
+                case "BinaryRecursive":
+                    index = binarySearch.RecursiveFind(movieList, testInput, 0, movieList.Length);
+                    break;
+
                 default:
-                    result = movieList[linearSearch.Find(movieList, testInput)];
+                    index = linearSearch.Find(movieList, testInput);
                     break;
             }
+
+            timer.Stop();
+            timeTaken+= timer.ElapsedTicks;
+
+            result = (index >= 0)
+                            ? movieList[index]
+                            : "no result found";
 
             string report = (result == expectedResult)
                             ? "TRUE"
                             : $"FALSE     actual result: {result}";
 
             //Print Test Report 
-            Console.WriteLine($"\nTest {testCounter} complete: {searchType}\n" +
+            Console.WriteLine($"\nTest {TestCounter} complete: {searchType}\n" +
                 $"  find: {testInput}     expect: {expectedResult}\n" +
+                $"  Time taken (ticks): {timer.ElapsedTicks}\n" +
                 $"  result: {report}");
 
+        }
+
+        static void PrintStats()
+        {
+            Console.WriteLine($"\nTests results to average: {TestCounter}\n" +
+                                $"Total Time taken (ticks): {timeTaken}\n" +
+                                $"Average Time per test (ticks): {timeTaken / TestCounter}");
         }
     }
 }
