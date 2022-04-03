@@ -16,16 +16,11 @@ namespace Searching_Algorithms
             //welcome message
             Console.WriteLine("Hello World! lets get searching!");
 
-            //build array containing movie Titles
-            ObtainRecords.Build();
-
-            //Print List
-            //ObtainRecords.PrintList(movieList);
-
-
-
             string result;
             int index;
+
+            //build array containing movie Titles
+            ObtainRecords.Build("200");
 
             //Linear Search For elements
             LinearSearch linearSearch = new LinearSearch();
@@ -57,8 +52,9 @@ namespace Searching_Algorithms
             Test("linear", "enough", "World Is Not Enough");
             Test("linear", "mermaid", "Little Mermaid");
             Test("linear", "negative test", "no result found");
-
             PrintStats();
+
+            ResetStats();
 
 
 
@@ -119,6 +115,12 @@ namespace Searching_Algorithms
             Console.WriteLine($"\nTests results to average: {TestCounter}\n" +
                                 $"Total Time taken (ticks): {timeTaken}\n" +
                                 $"Average Time per test (ticks): {timeTaken / TestCounter}");
+        }
+
+        static void ResetStats()
+        {
+            TestCounter = 0;
+            timeTaken = 0;
         }
     }
 }

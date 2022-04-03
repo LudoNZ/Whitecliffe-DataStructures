@@ -8,10 +8,10 @@ namespace Searching_Algorithms
     //Will Create an Array from a specified text file
     class ObtainRecords
     {
-        public static void Build()
+        public static void Build(string amount)
         {
             //Use path to the records.txt here
-            string path = @"C:\Users\ludob\Desktop\Whitecliffe-DataStructures\PracticalTask3_SearchingAlgorithms\searchingAlgorithms_20210741\moviesTopGrossing200.txt";
+            string path = @$"C:\Users\ludob\Desktop\Whitecliffe-DataStructures\PracticalTask3_SearchingAlgorithms\searchingAlgorithms_20210741\moviesTopGrossing{amount}.txt";
 
             Program.movieList = new string[200];
 
