@@ -10,9 +10,12 @@ namespace Searching_Algorithms
         {
             for (int i = 0; i < list.Length; i++)
             {
-                if (list[i].ToUpper().Contains(value.ToUpper()))
+                if (list[i] != null)
                 {
-                    return i;
+                    if (list[i].ToUpper().Contains(value.ToUpper()))
+                    {
+                        return i;
+                    }
                 }
             }
 
