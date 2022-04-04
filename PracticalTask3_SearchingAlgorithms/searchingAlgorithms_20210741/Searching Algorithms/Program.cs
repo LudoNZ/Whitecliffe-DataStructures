@@ -24,50 +24,48 @@ namespace Searching_Algorithms
             //Linear Search For elements
             LinearSearch linearSearch = new LinearSearch();
             index = linearSearch.Find(movieList, "enough");
-
             PrintResult(movieList, index);
 
-            //Binary Search
+            //Binary Searches...
             BinarySearch binarySearch = new BinarySearch();
-
+                        
             //Iterative Search
-            index = binarySearch.IterativeFind(movieList, "mermaid");
-
+            index = binarySearch.IterativeFind(movieList, "101 Dalmatians");
             PrintResult(movieList, index);
 
-            //Recursive Seacrh
-            //index = binarySearch.RecursiveFind(movieList, "mermaid", 0, movieList.Length);
+            //Recursive Search
+            index = binarySearch.RecursiveFind(movieList, "Ace Ventura: When Nature Calls", 0, movieList.Length);
+            PrintResult(movieList, index);
+
 
             //Linear Search
-            Console.WriteLine("\n****Testing Linear Search****");
             ResetStats();
-
+            Console.WriteLine("\n****Testing Linear Search****");
             Test("linear", "enough", "World Is Not Enough");
             Test("linear", "mermaid", "Little Mermaid");
             Test("linear", "negative test", "no result found");
             PrintStats();
-
+            ResetStats();
 
             //Binary Search, Iterative
             Console.WriteLine("\n****Testing Binary Iterative Search****");
-            ResetStats();
-
+            
             Test("BinaryIterative", "enough", "no result found");
             Test("BinaryIterative", "mermaid", "Little Mermaid");
             Test("BinaryIterative", "negative test", "no result found");
             PrintStats();
-
+            ResetStats();
 
             //Binary Search, Recursive
             Console.WriteLine("\n****Testing Binary Recursive Search****");
-            ResetStats();
-
-            
             Test("BinaryRecursive", "mermaid", "Little Mermaid");
             Test("BinaryRecursive", "enough", "no result found");
             Test("BinaryRecursive", "negative test", "no result found");
-            PrintStats();
+            Test("BinaryRecursive", "Ace Ventura: When Nature Calls", "Ace Ventura: When Nature Calls");
+            Test("BinaryRecursive", "101 Dalmatians", "101 Dalmatians ");
 
+            PrintStats();
+            ResetStats(); 
 
 
         }
@@ -81,6 +79,7 @@ namespace Searching_Algorithms
             LinearSearch linearSearch = new LinearSearch();
             BinarySearch binarySearch = new BinarySearch();
 
+            //Time Test duration
             System.Diagnostics.Stopwatch timer = System.Diagnostics.Stopwatch.StartNew();
 
             //Select Search algorithm
@@ -103,6 +102,7 @@ namespace Searching_Algorithms
                     break;
             }
 
+            //Stop Timer
             timer.Stop();
             timeTaken+= timer.ElapsedTicks;
 
@@ -126,7 +126,7 @@ namespace Searching_Algorithms
         {
             Console.WriteLine($"\n\nTests results to average: {TestCounter}\n" +
                                 $"Total Time taken (ticks): {timeTaken}\n" +
-                                $"Average Time per test (ticks): {timeTaken / TestCounter}");
+                                $"Average Time per test (ticks): {timeTaken / TestCounter}\n\n");
         }
 
         static void PrintResult(string[] array, int index)

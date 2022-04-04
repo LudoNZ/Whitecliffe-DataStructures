@@ -8,37 +8,40 @@ namespace Searching_Algorithms
     {
         public int IterativeFind(string[] array, string value)
         {
-            int lowerBound = 0;
-            int upperBound = array.Length;
-
-            while (lowerBound < upperBound)
-            {
-                int midPoint = (lowerBound + upperBound) / 2;
-
-                string midValue = array[midPoint];
-
-                //check if values are equal
-                bool areEqual = String.Equals(midValue, value, StringComparison.OrdinalIgnoreCase);
-
-                bool contains = midValue.ToUpper().Contains(value.ToUpper());
-
-                //compare value alpahabetically
-                int comparison = String.Compare(midValue, value, comparisonType: StringComparison.OrdinalIgnoreCase);
-
-                if (contains)
+            if(array.Length >= 1)
                 {
-                    return midPoint;
-                }
-                if (comparison > 0)
+                int lowerBound = 0;
+                int upperBound = array.Length;
+
+                while (lowerBound < upperBound)
+                {
+                    int midPoint = (lowerBound + upperBound) / 2;
+
+                    string midValue = array[midPoint];
+
+                    //check if values are equal
+                    bool areEqual = String.Equals(midValue, value, StringComparison.OrdinalIgnoreCase);
+
+                    bool contains = midValue.ToUpper().Contains(value.ToUpper());
+
+                    //compare value alpahabetically
+                    int comparison = String.Compare(midValue, value, comparisonType: StringComparison.OrdinalIgnoreCase);
+
+                    if (contains)
                     {
-                        upperBound = midPoint - 1;
+                        return midPoint;
                     }
-                    else
-                    {
-                        lowerBound = midPoint + 1;
-                    }
+                    if (comparison > 0)
+                        {
+                            upperBound = midPoint - 1;
+                        }
+                        else
+                        {
+                            lowerBound = midPoint + 1;
+                        }
 
                 }
+            }
             return -1;
         }
 
