@@ -16,19 +16,16 @@ namespace Searching_Algorithms
             //welcome message
             Console.WriteLine("Hello World! lets get searching!");
 
-            string result;
             int index;
 
             //build array containing movie Titles
-            ObtainRecords.Build("200");
+            ObtainRecords.Build("moviesTopGrossing200");
 
             //Linear Search For elements
             LinearSearch linearSearch = new LinearSearch();
             index = linearSearch.Find(movieList, "enough");
 
-            result = (index == -1) ? "NO MATCH FOUND"
-                                    : movieList[index];
-            Console.WriteLine($"\n Linear Search result: {result}");
+            PrintResult(movieList, index);
 
             //Binary Search
             BinarySearch binarySearch = new BinarySearch();
@@ -36,25 +33,40 @@ namespace Searching_Algorithms
             //Iterative Search
             index = binarySearch.IterativeFind(movieList, "mermaid");
 
+            PrintResult(movieList, index);
 
-            result = (index == -1) ? "NO MATCH FOUND"
-                                    : movieList[index];
+            //Recursive Seacrh
+            //index = binarySearch.RecursiveFind(movieList, "mermaid", 0, movieList.Length);
 
-            Console.WriteLine($"Iterative Binary Search result: {result}");
-
-            index = binarySearch.RecursiveFind(movieList, "mermaid", 0, movieList.Length);
-
-
-            TestCounter = 0;
-
+            //Linear Search
             Console.WriteLine("\n****Testing Linear Search****");
+            ResetStats();
 
             Test("linear", "enough", "World Is Not Enough");
             Test("linear", "mermaid", "Little Mermaid");
             Test("linear", "negative test", "no result found");
             PrintStats();
 
+
+            //Binary Search, Iterative
+            Console.WriteLine("\n****Testing Binary Iterative Search****");
             ResetStats();
+
+            Test("BinaryIterative", "enough", "no result found");
+            Test("BinaryIterative", "mermaid", "Little Mermaid");
+            Test("BinaryIterative", "negative test", "no result found");
+            PrintStats();
+
+
+            //Binary Search, Recursive
+            Console.WriteLine("\n****Testing Binary Recursive Search****");
+            ResetStats();
+
+            
+            Test("BinaryRecursive", "mermaid", "Little Mermaid");
+            Test("BinaryRecursive", "enough", "no result found");
+            Test("BinaryRecursive", "negative test", "no result found");
+            PrintStats();
 
 
 
@@ -112,9 +124,17 @@ namespace Searching_Algorithms
 
         static void PrintStats()
         {
-            Console.WriteLine($"\nTests results to average: {TestCounter}\n" +
+            Console.WriteLine($"\n\nTests results to average: {TestCounter}\n" +
                                 $"Total Time taken (ticks): {timeTaken}\n" +
                                 $"Average Time per test (ticks): {timeTaken / TestCounter}");
+        }
+
+        static void PrintResult(string[] array, int index)
+        {
+            string result = (index == -1) ? "NO MATCH FOUND"
+                                    : array[index];
+
+        Console.WriteLine($"\nSearch result: {result}");
         }
 
         static void ResetStats()

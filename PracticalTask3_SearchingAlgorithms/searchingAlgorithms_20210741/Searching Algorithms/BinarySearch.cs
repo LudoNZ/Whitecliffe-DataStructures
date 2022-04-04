@@ -25,21 +25,6 @@ namespace Searching_Algorithms
                 //compare value alpahabetically
                 int comparison = String.Compare(midValue, value, comparisonType: StringComparison.OrdinalIgnoreCase);
 
-              //if (comparison < 0)
-              //  {
-              //      Console.WriteLine($"<{midValue}> is less than <{value}>");
-              //  }
-
-              //  else if (comparison > 0)
-              //  {
-              //      Console.WriteLine($"<{midValue}> is greater than <{value}>");
-              //  }
-
-              //  else
-              //  {
-              //      Console.WriteLine($"<{midValue}> and <{value}> are equivalent in order");
-              //  }
-
                 if (contains)
                 {
                     return midPoint;
@@ -59,32 +44,35 @@ namespace Searching_Algorithms
 
         public int RecursiveFind(string[] array, string value, int lowerBound, int length)
         {
-            
-            if(length >= 1) 
-            { 
-                int midPoint = (lowerBound + length) / 2;
 
-                string midValue = array[midPoint];
-
-                //check if value is contained in element Title
-                bool contains = midValue.ToUpper().Contains(value.ToUpper());
-
-                //compare values alpahabetically for Order
-                int comparison = String.Compare(midValue, value, comparisonType: StringComparison.OrdinalIgnoreCase);
-
-                if (contains)
+            while (lowerBound < length)
+            {
+                if (length >= 1)
                 {
-                    return midPoint;
-                }
-                if (comparison > 0)
-                {
-                    return RecursiveFind(array, value, lowerBound, midPoint - 1);
-                }
-                else
-                {
-                    return RecursiveFind(array, value, midPoint + 1, midPoint - 1);
-                }
+                    int midPoint = (lowerBound + length) / 2;
 
+                    string midValue = array[midPoint];
+
+                    //check if value is contained in element Title
+                    bool contains = midValue.ToUpper().Contains(value.ToUpper());
+
+                    //compare values alpahabetically for Order
+                    int comparison = String.Compare(midValue, value, comparisonType: StringComparison.OrdinalIgnoreCase);
+
+                    if (contains)
+                    {
+                        return midPoint;
+                    }
+                    if (comparison > 0)
+                    {
+                        return RecursiveFind(array, value, lowerBound, midPoint - 1);
+                    }
+                    else
+                    {
+                        return RecursiveFind(array, value, midPoint + 1, length);
+                    }
+
+                }
             }
             return -1;
         }

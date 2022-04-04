@@ -11,7 +11,7 @@ namespace Searching_Algorithms
         public static void Build(string amount)
         {
             //Use path to the records.txt here
-            string path = @$"C:\Users\ludob\Desktop\Whitecliffe-DataStructures\PracticalTask3_SearchingAlgorithms\searchingAlgorithms_20210741\moviesTopGrossing{amount}.txt";
+            string path = @$"Files\{amount}.txt";
 
             Program.movieList = new string[200];
 
