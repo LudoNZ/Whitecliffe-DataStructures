@@ -8,12 +8,12 @@ namespace Searching_Algorithms
     //Will Create an Array from a specified text file
     class ObtainRecords
     {
-        public static void Build(string amount)
+        public static void Build(string amount,int size)
         {
             //Use path to the records.txt here
             string path = @$"Files\{amount}.txt";
 
-            Program.movieList = new string[200];
+            Program.movieList = new string[size];
 
             //Read file using streamreader. (reads Line by Line)
             if (File.Exists(path))

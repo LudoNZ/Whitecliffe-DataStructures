@@ -68,7 +68,7 @@ namespace Searching_Algorithms
                     }
                     if (comparison > 0)
                     {
-                        return RecursiveFind(array, value, lowerBound, midPoint - 1);
+                        return RecursiveFind(array, value, lowerBound, midPoint);
                     }
                     else
                     {
