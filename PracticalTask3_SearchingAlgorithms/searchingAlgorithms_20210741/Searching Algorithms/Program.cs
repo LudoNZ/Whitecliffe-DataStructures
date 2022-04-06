@@ -21,58 +21,52 @@ namespace Searching_Algorithms
             //build initial small array containing movie Titles
             ObtainRecords.Build("moviesTopGrossing200", 187);
 
-
             //PrintArray(movieList);
 
             //Linear Search For elements
-            LinearSearch linearSearch = new LinearSearch();
-            index = linearSearch.Find(movieList, "enough");
+            Search search = new Search();
+            index = search.LinearSearch(movieList, "enough");
             PrintResult(movieList, index);
-
-            //Instantiate Binary Search
-            BinarySearch binarySearch = new BinarySearch();
                         
             //Iterative Search
-            index = binarySearch.IterativeFind(movieList, "101 Dalmatians");
+            index = search.BinaryIterativeSearch(movieList, "101 Dalmatians");
             PrintResult(movieList, index);
 
             //Recursive Search
-            index = binarySearch.RecursiveFind(movieList, "Ace Ventura: When Nature Calls", 0, movieList.Length);
+            index = search.BinaryRecursiveSearch(movieList, "Ace Ventura: When Nature Calls", 0, movieList.Length);
             PrintResult(movieList, index);
 
+            //Run tests designed for the moviesTopGrossing200 file
             AutoTest200();
-            
 
             //build Large enough array to gather valid timer results
             ObtainRecords.Build("movieTitles2million", 2008061);
 
             Array.Sort(movieList, StringComparer.InvariantCultureIgnoreCase);
 
+            //Find All matching Titles.
+            PrintList(search.FindAll(movieList, "mermaid"));
 
-            PrintList(linearSearch.FindAll(movieList, "mermaid"));
+            //Run tests designed for the movieTitles2million file
             //AutoTest2mill();
 
         }
 
         static void PrintArray(string[] array)
         {
-            int lineCounter = 0;
-
             foreach(string item in array)
             {
-                Console.WriteLine($"{lineCounter} {item}");
-                lineCounter++;
+                Console.WriteLine($"{item}");
             }
         }
 
         static void PrintList(List<string> list)
         {
-            int lineCounter = 0;
+            Console.WriteLine($"\nAll matching Titles:");
 
             foreach (string item in list)
             {
-                Console.WriteLine($"{lineCounter} {item}");
-                lineCounter++;
+                Console.WriteLine($" {item}");
             }
         }
 
@@ -82,8 +76,7 @@ namespace Searching_Algorithms
 
             string result;
             int index;
-            LinearSearch linearSearch = new LinearSearch();
-            BinarySearch binarySearch = new BinarySearch();
+            Search search = new Search();
 
             //Time Test duration
             System.Diagnostics.Stopwatch timer = System.Diagnostics.Stopwatch.StartNew();
@@ -92,19 +85,19 @@ namespace Searching_Algorithms
             switch (searchType)
             {
                 case "linear":
-                    index = linearSearch.Find(movieList, testInput);
+                    index = search.LinearSearch(movieList, testInput);
                     break;
 
                 case "BinaryIterative":
-                    index = binarySearch.IterativeFind(movieList, testInput);
+                    index = search.BinaryIterativeSearch(movieList, testInput);
                     break;
 
                 case "BinaryRecursive":
-                    index = binarySearch.RecursiveFind(movieList, testInput, 0, movieList.Length);
+                    index = search.BinaryRecursiveSearch(movieList, testInput, 0, movieList.Length);
                     break;
 
                 default:
-                    index = linearSearch.Find(movieList, testInput);
+                    index = search.LinearSearch(movieList, testInput);
                     break;
             }
 

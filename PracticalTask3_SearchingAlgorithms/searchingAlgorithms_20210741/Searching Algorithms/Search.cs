@@ -1,15 +1,53 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Searching_Algorithms
 {
-    class BinarySearch
+    class Search
     {
-        public int IterativeFind(string[] array, string value)
+        public int LinearSearch(string[] list, string value)
         {
-            if(array.Length >= 1)
+            for (int i = 0; i < list.Length; i++)
+            {
+                if (list[i] != null)
                 {
+                    if (list[i].ToUpper().Contains(value.ToUpper()))
+                    {
+                        return i;
+                    }
+                }
+            }
+
+            return -1;
+        }
+
+        public List<string> FindAll(string[] array, string value)
+        {
+            List<string> list = new List<string>();
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] != null)
+                {
+                    if (array[i].ToUpper().Contains(value.ToUpper()))
+                    {
+                        list.Add(array[i]);
+                    }
+                }
+            }
+
+            //List<string> noDupes = list.Distinct().ToList();
+            list = list.Distinct().ToList();
+
+            return list;
+        }
+
+        public int BinaryIterativeSearch(string[] array, string value)
+        {
+            if (array.Length >= 1)
+            {
                 int lowerBound = 0;
                 int upperBound = array.Length;
 
@@ -32,20 +70,20 @@ namespace Searching_Algorithms
                         return midPoint;
                     }
                     if (comparison > 0)
-                        {
-                            upperBound = midPoint;
-                        }
-                        else
-                        {
-                            lowerBound = midPoint + 1;
-                        }
+                    {
+                        upperBound = midPoint;
+                    }
+                    else
+                    {
+                        lowerBound = midPoint + 1;
+                    }
 
                 }
             }
             return -1;
         }
 
-        public int RecursiveFind(string[] array, string value, int lowerBound, int length)
+        public int BinaryRecursiveSearch(string[] array, string value, int lowerBound, int length)
         {
 
             while (lowerBound < length)
@@ -68,19 +106,16 @@ namespace Searching_Algorithms
                     }
                     if (comparison > 0)
                     {
-                        return RecursiveFind(array, value, lowerBound, midPoint);
+                        return BinaryRecursiveSearch(array, value, lowerBound, midPoint);
                     }
                     else
                     {
-                        return RecursiveFind(array, value, midPoint + 1, length);
+                        return BinaryRecursiveSearch(array, value, midPoint + 1, length);
                     }
 
                 }
             }
             return -1;
         }
-
-    }                                                                                                                                                                                                   
+    }
 }
-
-
