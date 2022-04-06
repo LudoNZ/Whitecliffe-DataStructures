@@ -8,10 +8,10 @@ namespace Searching_Algorithms
     //Will Create an Array from a specified text file
     class ObtainRecords
     {
-        public static void Build(string amount,int size)
+        public static void Build(string resource, int size)
         {
             //Use path to the records.txt here
-            string path = @$"Files\{amount}.txt";
+            string path = @$"Files\{resource}.txt";
 
             Program.movieList = new string[size];
 
@@ -28,9 +28,9 @@ namespace Searching_Algorithms
                     while ((title = file.ReadLine()) != null)
                     {
                         //adding movie Title to the list
-                        Program.movieList[counter] = title;
+                        Program.movieList[counter] = title.Trim();
 
-                        counter ++;
+                        counter++;
                     }
 
                     //close .txt File 
@@ -50,7 +50,7 @@ namespace Searching_Algorithms
             {
                 Console.WriteLine(item);
             }
-            
+
         }
     }
 }

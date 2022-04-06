@@ -33,7 +33,7 @@ namespace Searching_Algorithms
                     }
                     if (comparison > 0)
                         {
-                            upperBound = midPoint - 1;
+                            upperBound = midPoint;
                         }
                         else
                         {

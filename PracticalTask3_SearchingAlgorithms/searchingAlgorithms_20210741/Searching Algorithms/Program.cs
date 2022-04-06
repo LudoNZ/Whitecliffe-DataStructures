@@ -19,7 +19,10 @@ namespace Searching_Algorithms
             int index;
 
             //build initial small array containing movie Titles
-            ObtainRecords.Build("moviesTopGrossing200", 200);
+            ObtainRecords.Build("moviesTopGrossing200", 187);
+
+
+            //PrintArray(movieList);
 
             //Linear Search For elements
             LinearSearch linearSearch = new LinearSearch();
@@ -37,14 +40,40 @@ namespace Searching_Algorithms
             index = binarySearch.RecursiveFind(movieList, "Ace Ventura: When Nature Calls", 0, movieList.Length);
             PrintResult(movieList, index);
 
-            AutoTest();
+            AutoTest200();
             
 
             //build Large enough array to gather valid timer results
-            ObtainRecords.Build("movieTitles2million", 2000000);
+            ObtainRecords.Build("movieTitles2million", 2008061);
 
-            AutoTest();
+            Array.Sort(movieList, StringComparer.InvariantCultureIgnoreCase);
 
+
+            PrintList(linearSearch.FindAll(movieList, "mermaid"));
+            //AutoTest2mill();
+
+        }
+
+        static void PrintArray(string[] array)
+        {
+            int lineCounter = 0;
+
+            foreach(string item in array)
+            {
+                Console.WriteLine($"{lineCounter} {item}");
+                lineCounter++;
+            }
+        }
+
+        static void PrintList(List<string> list)
+        {
+            int lineCounter = 0;
+
+            foreach (string item in list)
+            {
+                Console.WriteLine($"{lineCounter} {item}");
+                lineCounter++;
+            }
         }
 
         static void Test(string searchType, string testInput, string expectedResult)
@@ -99,13 +128,50 @@ namespace Searching_Algorithms
 
         }
 
-        static void AutoTest()
+        static void AutoTest200()
         {
             //Linear Search
             ResetStats();
             Console.WriteLine("\n****Testing Linear Search****");
-            Test("linear", "enough", "World Is Not Enough");
+            Test("linear", "Rocky Horror Picture Show", "Rocky Horror Picture Show");
             Test("linear", "mermaid", "Little Mermaid");
+            Test("linear", "negative test", "no result found");
+            Test("linear", "rush hour", "Rush Hour");
+            Test("linear", "Godzilla", "Godzilla");
+            PrintStats("Linear Search");
+            ResetStats();
+
+            //Binary Search, Iterative
+            Console.WriteLine("\n****Testing Binary Iterative Search****");
+
+            Test("BinaryIterative", "Good Will Hunting", "Good Will Hunting");
+            Test("BinaryIterative", "Pretty Woman", "Pretty Woman");
+            Test("BinaryIterative", "Driving Miss Daisy", "Driving Miss Daisy");
+            Test("BinaryIterative", "Butch Cassidy and the Sundance Kid", "Butch Cassidy and the Sundance Kid");
+            Test("BinaryIterative", "negative test", "no result found");
+            PrintStats("Binary Search, Iterative");
+            ResetStats();
+
+            //Binary Search, Recursive
+            Console.WriteLine("\n****Testing Binary Recursive Search****");
+            Test("BinaryRecursive", "Good Will Hunting", "Good Will Hunting");
+            Test("BinaryRecursive", "Pretty Woman", "Pretty Woman");
+            Test("BinaryRecursive", "Driving Miss Daisy", "Driving Miss Daisy");
+            Test("BinaryRecursive", "Butch Cassidy and the Sundance Kid", "Butch Cassidy and the Sundance Kid");
+            Test("BinaryRecursive", "negative test", "no result found");
+            PrintStats("Binary Search, Recursive");
+            ResetStats();
+        }
+
+        static void AutoTest2mill()
+        {
+            //Linear Search
+            ResetStats();
+            Console.WriteLine("\n****Testing Linear Search****");
+            Test("linear", "Rocky Horror Picture Show", "Rocky Horror Picture Show");
+            Test("linear", "mermaid", "Little Mermaid");
+            Test("linear", "rush hour", "Rush Hour ");
+            Test("linear", "Godzilla", "Godzilla ");
             Test("linear", "negative test", "no result found");
             PrintStats("Linear Search");
             ResetStats();
@@ -113,19 +179,21 @@ namespace Searching_Algorithms
             //Binary Search, Iterative
             Console.WriteLine("\n****Testing Binary Iterative Search****");
 
-            Test("BinaryIterative", "enough", "no result found");
-            Test("BinaryIterative", "mermaid", "Little Mermaid");
+            Test("BinaryIterative", "Good Will Hunting", "Good Will Hunting ");
+            Test("BinaryIterative", "Pretty Woman", "Pretty Woman ");
+            Test("BinaryIterative", "Driving Miss Daisy", "Driving Miss Daisy ");
+            Test("BinaryIterative", "Butch Cassidy and the Sundance Kid", "Butch Cassidy and the Sundance Kid ");
             Test("BinaryIterative", "negative test", "no result found");
             PrintStats("Binary Search, Iterative");
             ResetStats();
 
             //Binary Search, Recursive
             Console.WriteLine("\n****Testing Binary Recursive Search****");
-            Test("BinaryRecursive", "mermaid", "Little Mermaid");
-            Test("BinaryRecursive", "enough", "no result found");
+            Test("BinaryRecursive", "Good Will Hunting", "Good Will Hunting ");
+            Test("BinaryRecursive", "Pretty Woman", "Pretty Woman ");
+            Test("BinaryRecursive", "Driving Miss Daisy", "Driving Miss Daisy ");
+            Test("BinaryRecursive", "Butch Cassidy and the Sundance Kid", "Butch Cassidy and the Sundance Kid ");
             Test("BinaryRecursive", "negative test", "no result found");
-            Test("BinaryRecursive", "Ace Ventura: When Nature Calls", "Ace Ventura: When Nature Calls ");
-            Test("BinaryRecursive", "101 Dalmatians", "101 Dalmatians ");
             PrintStats("Binary Search, Recursive");
             ResetStats();
         }
@@ -135,7 +203,8 @@ namespace Searching_Algorithms
             Console.WriteLine($"\n#### STATS REPORT #### {stats}\n" +
                                 $"Tests results to average: {TestCounter}\n" +
                                 $"Total Time taken (ticks): {timeTaken}\n" +
-                                $"Average Time per test (ticks): {timeTaken / TestCounter}\n\n");
+                                $"Average Time per test (ticks): {timeTaken / TestCounter}\n" +
+                                $"--------------------------------------------------------------------------------------------\n\n");
         }
 
         static void PrintResult(string[] array, int index)
@@ -152,5 +221,6 @@ namespace Searching_Algorithms
             TestCounter = 0;
             timeTaken = 0;
         }
+
     }
 }
